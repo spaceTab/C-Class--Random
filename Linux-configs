@@ -1,0 +1,28 @@
+#environment variables for changing to specified Directories
+# last added/edited January, 30, 2018 ~By spaceTab  ~Adding C++ Directory Paths  
+BIB=/home/spaceTab/Programming/LinuxBible
+
+PY=/home/spaceTab/Programming/python
+
+SCRPT=/home/spaceTab/Programming/bashscripts
+
+CPP=/home/spaceTab/Programming/C++
+
+PLUSCLASS=/home/spaceTab/Programming/C++/ClassWork
+
+export PY
+export BIB
+export SCRPT
+export CPP
+export PLUSCLASS
+
+
+#Screenfetch on start-up (shows distro, and system information)
+# initialized on January 19th, 2018 ~By spaceTab
+
+screenfetch -D "Fedora"
+
+
+# attempt to change host and user name
+
+export PS1="\n\[\e[01;33m\]\u\[\e[0m\]\[\e[00;37m\]@\[\e[0m\]\[\e[01;36m\]\h\[\e[0m\]\[\e[00;37m\] \t \[\e[0m\]\[\e[01;35m\]\w\[\e[0m\]\[\e[01;37m\] \[\e[0m\]\n$ "
