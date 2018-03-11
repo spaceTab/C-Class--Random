@@ -1,0 +1,15 @@
+#Located in /etc/xorg.conf.d
+#create file -- 40-monitor.conf
+#adding the custom resolution for secondary monitor into persistance
+
+
+Section "Monitor"
+ Identifier "DP-1"
+ Modeline "1680x1050_60.00"  146.25  1680 1784 1960 2240  1050 1053 1059 1089 -hsync +vsync
+ Option "PreferredMode" "1680x1050_60.00"
+EndSection
+
+#last Add Jan, 5 2018. Reso's beyond 1680 don't seem to work.
+#other Resolutions that have been added. 
+ #Modeline "1440x900_60.00"  106.50  1440 1528 1672 1904  900 903 909 934 -hsync +vsync
+ #Option "PreferredMode" "1440x900_60.00"
