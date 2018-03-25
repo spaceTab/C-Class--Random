@@ -1,0 +1,116 @@
+/*
+**Program Created by Jacob Plaisted.
+**Metric converts Feet, Inches, Pounds & Ounces to its metric system alternative
+**Doing so by using user-defined functions
+*/
+
+#include <iostream>
+
+using namespace std;
+
+//function prototypes
+int menu();
+int getFeet();
+int getInches();
+int getPounds();
+int getOunces();
+void toMetricDistance(int feet, int inches);
+void toMetricWeight(int pounds, int ounces);
+
+int main() {
+
+  int choice;
+
+   do {
+     choice = menu();                       //sets choice to menu function
+     int feet, inch, pounds, ounces;
+     if (choice != 3) {
+       switch (choice) {
+         case 1:                        //sets ints to the return of the neccisary functions
+          feet = getFeet();
+          inch = getInches();
+          toMetricDistance(feet, inch);
+          break;
+         case 2:
+          pounds = getPounds();
+          ounces = getOunces();
+          toMetricWeight(pounds, ounces);
+          break;
+         case 3:
+          cout << "Exiting Program";
+          break;
+       }
+     }
+   } while (choice != 3);
+  return 0;
+}
+
+//user defined function for the option menu.
+int menu(){
+  int choice;
+  cout << "What would you like to convert?: " << endl;
+  cout << "1: Convert U.S distance to metric distance" << endl;
+  cout << "2: Convert U.S weight to metric weight" << endl;
+  cout << "3: exit Program" << endl;
+
+  cin >> choice;
+
+  if(choice != 1 && choice != 2 && choice != 3)      //checks input option is correct
+    return -1;                                      //if incorrect returns -1
+  return choice;
+}
+
+void toMetricDistance(int feet, int inches) {
+  double metre = feet * 0.3048;                 //conversion math
+  double centi = inches * 0.254;
+
+  cout << "That converts to: " << metre << " meters" << endl;
+  cout << "That converts to: " << centi << " centi" << endl;
+  cout << endl;
+}
+void toMetricWeight(int pounds, int ounces){
+  double kilos = pounds * 0.453592;       //conversion math
+  double grams = ounces * 0.0625;
+
+  cout << "That converts to: " << kilos << " Kilograms" << endl;
+  cout << "That converts to: " << grams << " Grams" << endl;
+  cout << endl;
+
+}
+//function to take user inputted feet
+int getFeet(){
+  int feet;
+
+  cout << "Enter the length in feet" << endl;
+  cin >> feet;
+
+  return feet;
+}
+//function to take user inputted inches
+int getInches(){
+  int inches;
+
+  cout << "Enter the length in inches" << endl;
+
+  cin>>inches;
+
+  return inches;
+}
+//function to take user inputted pounds
+int getPounds(){
+  int pounds;
+
+  cout << "How many pounds would you like to convert" << endl;
+  cin >> pounds;
+
+  return pounds;
+}
+//function to take user inputted ounces
+int getOunces(){
+  int ounces;
+
+  cout << "How many ounces would you like to convert" << endl;
+  cin >> ounces;
+
+  return ounces;
+}
