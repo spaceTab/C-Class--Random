@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+  string userName;                                    //string value for inputted name by user
+  const int RESERVE_MAX = 50;                        //testingw w/ 5 will be changed to 50;
+  vector<string> reserved, waitlist;                //vector strings for reserved and wait list
+  int optionChoice;                                // Input for choosing which option in switch.
+  bool flag;                                      //condition tester, used in option 3.
+
+  do {
+    //Resturaunt greeting 'banner'
+    cout << "---------------------------------" << endl;
+    cout << "| Welcome To The Mystery Dinner |" << endl;
+    cout << "---------------------------------" << endl;
+    cout << endl;
+    // prompts user for one of 4 choices (5th option being to exit program.)
+    cout << "1: Would you like to add your name to the reservation list?" << endl;
+    cout << "2: Shall, I check your name for an existing reservation" << endl;
+    cout << "3: Check the names of existing reservations" << endl;
+    cout << "4: Check the names currently on the wait list" << endl;
+    cout << "5: Cancel Options and exit" << endl;
+    cout << endl;
+    cout << "Which option do you choose: ";
+    cin >> optionChoice;
+
+    switch(optionChoice) {
+      case 1:
+        cout << "What is your Name? " << endl;
+        cin>>userName;
+        if(reserved.size()<RESERVE_MAX) {                                       //checks size of vector, and sees if it's less than RESERV_MAX
+          reserved.push_back(userName);                                         //pushes username to the back of vector elements.
+        }
+        else {
+          cout<<"Reservation is full we are entering your name in waitlist"<<endl;
+          waitlist.push_back(userName);                                         //when reserved is full, pushes userName to back of waitlist
+        }
+      break;
+      case 2:
+        cout << "What name Would you like me to check for?: ";
+        cin >> userName;
+
+        flag = true;                                                            //flag is used to check condition of reserved and wait list. if false both are empty.
+
+        for (int i=0; i < reserved.size(); ++i) {
+          if (reserved[i] == userName) {                                        //checks names in reserved are equal to input 'userName'
+            cout << "The name is on the list and at the position "<< i+1 << endl;
+            flag = false;
+          }
+        }
+        for (int i = 0; i < waitlist.size(); ++i) {
+          if (waitlist[i] == userName) {                                        //checks names in waitlist are equal to input 'userName'
+            cout << "The name was on the wait list" << i+1 <<endl;
+            flag = false;
+          }
+        }
+          if (flag) {                                                           //if the flag remains true, the inputted name wasn't found.
+            cout << "The name was not found" << endl;
+          }
+      break;
+      case 3:
+        for (int i = 0; i < reserved.size(); ++i) {                             //loops through vector outputs the each reservation and its position
+          cout << "The reservation at position " << i+1 <<" is by " << reserved[i] << endl;
+        }                                                                       //checks if reservation vector is empty
+          if(reserved.size() == 0) {
+            cout << "No reservations have been made" << endl;
+          }
+      break;
+      case 4:
+        for (int i = 0; i < waitlist.size(); ++i){                              //loops through waitlist & outputs wait list names and position.
+          cout << "customers on wait list are" << i+1 << waitlist[i] << endl;
+        }
+          if (waitlist.size() == 0) {                                           //checks if the waitlist is empty
+            cout << "There are no names on the wait list" << endl;
+        }
+      break;
+      case 5:
+      break;
+      default:
+        cout << "Wrong choice" << endl;
+      break;
+     }
+     cout << endl;
+   } while (optionChoice != 5);      //allows for input of 5 to exit the program.
+
+  return 0;
+}
